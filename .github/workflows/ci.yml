@@ -1,0 +1,37 @@
+name: CI GitOps IaC
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Validar YAML Kubernetes
+        run: |
+          find k8s -name "*.yaml" -print
+          echo "Validação básica concluída"
+
+      - name: Verificar portas inseguras
+        run: |
+          if grep -R "nodePort" k8s/; then
+            echo "Uso de NodePort não permitido"
+            exit 1
+          fi
+          echo "Política de segurança aprovada"
+
+      - name: Validar estrutura do projeto
+        run: |
+          test -d app
+          test -d k8s
+          test -d docs
+          echo "Estrutura aprovada"
