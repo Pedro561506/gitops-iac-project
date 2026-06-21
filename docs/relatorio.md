@@ -294,3 +294,25 @@ O projeto demonstrou a implementação de uma esteira GitOps utilizando ferramen
 Foi possível versionar a infraestrutura, automatizar validações, criar ambientes distintos, realizar provisionamento com Terraform e demonstrar cenários de Drift e Reconciliação.
 
 A solução apresentou bom nível de automação, reprodutibilidade e facilidade de manutenção, atendendo aos objetivos propostos pela atividade.
+
+---
+
+## 14. Referências
+
+- Terraform Documentation. Disponível em: https://developer.hashicorp.com/terraform/docs
+
+- Kubernetes Documentation. Disponível em: https://kubernetes.io/docs/
+
+- Kustomize Documentation. Disponível em: https://kustomize.io/
+
+- GitHub Actions Documentation. Disponível em: https://docs.github.com/en/actions
+
+- Kind Documentation. Disponível em: https://kind.sigs.k8s.io/
+
+---
+
+## 15. Declaração de Autoria
+
+Declaro que este projeto foi desenvolvido individualmente para fins acadêmicos, utilizando ambiente local controlado e práticas seguras de desenvolvimento.
+
+Todo o código-fonte, documentação e experimentos apresentados foram implementados e executados pelo autor, sem utilização de ambientes de terceiros ou credenciais reais.
