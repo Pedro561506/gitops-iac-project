@@ -2,7 +2,8 @@
 
 ## 1. Identificação
 
-- Aluno: Pedro
+- Aluno: Pedro Gonçalves
+- RM: 561506
 - Disciplina: Infrastructure as Code (GitOps)
 - Curso: Cloud Computing
 - Instituição: FIAP
@@ -293,14 +294,3 @@ O projeto demonstrou a implementação de uma esteira GitOps utilizando ferramen
 Foi possível versionar a infraestrutura, automatizar validações, criar ambientes distintos, realizar provisionamento com Terraform e demonstrar cenários de Drift e Reconciliação.
 
 A solução apresentou bom nível de automação, reprodutibilidade e facilidade de manutenção, atendendo aos objetivos propostos pela atividade.
-
----
-
-## 14. Referências
-
-- https://www.terraform.io/
-- https://kubernetes.io/
-- https://kind.sigs.k8s.io/
-- https://kustomize.io/
-- https://argo-cd.readthedocs.io/
-- https://docs.github.com/actions
