@@ -1,14 +1,41 @@
 terraform {
-  required_version = ">= 1.5.0"
+
+  required_providers {
+
+    kubernetes = {
+
+      source = "hashicorp/kubernetes"
+
+      version = "~> 2.35"
+
+    }
+
+  }
+
 }
 
-resource "local_file" "inventory" {
-  filename = "${path.module}/inventory.txt"
+provider "kubernetes" {
 
-  content = <<EOT
-Projeto: GitOps IaC
-Cluster: kind-gitops-lab
-Ambientes: dev e hml
-Ferramentas: Terraform, Kubernetes, Kustomize, Argo CD e GitHub Actions
-EOT
+  config_path = "~/.kube/config"
+
+}
+
+resource "kubernetes_namespace" "dev" {
+
+  metadata {
+
+    name = "dev"
+
+  }
+
+}
+
+resource "kubernetes_namespace" "hml" {
+
+  metadata {
+
+    name = "hml"
+
+  }
+
 }
