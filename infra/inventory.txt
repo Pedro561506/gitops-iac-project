@@ -1,0 +1,4 @@
+Projeto: GitOps IaC
+Cluster: kind-gitops-lab
+Ambientes: dev e hml
+Ferramentas: Terraform, Kubernetes, Kustomize, Argo CD e GitHub Actions

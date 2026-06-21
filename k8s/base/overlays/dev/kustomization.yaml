@@ -1,8 +1,0 @@
-  resources:
-  - ../../base
-
-namePrefix: dev-
-
-replicas:
-  - name: gitops-app
-    count: 1

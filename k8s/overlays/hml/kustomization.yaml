@@ -1,0 +1,8 @@
+resources:
+  - ../../base
+
+namePrefix: hml-
+
+replicas:
+  - name: gitops-app
+    count: 2
