@@ -1,37 +1,69 @@
 name: CI GitOps IaC
 
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
       - main
 
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  validate:
+
+  terraform:
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: infra
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Validate
+        run: terraform validate
+
+  kubernetes:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código
+
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Validar YAML Kubernetes
-        run: |
-          find k8s -name "*.yaml" -print
-          echo "Validação básica concluída"
+      - name: Validar estrutura Kubernetes
 
-      - name: Verificar portas inseguras
         run: |
-          if grep -R "nodePort" k8s/; then
-            echo "Uso de NodePort não permitido"
+
+          test -f k8s/base/deployment.yaml
+
+          test -f k8s/base/service.yaml
+
+          test -f k8s/base/kustomization.yaml
+
+          echo "Estrutura Kubernetes OK"
+
+      - name: Política de segurança
+
+        run: |
+
+          if grep -R "NodePort" k8s/; then
+
+            echo "NodePort não permitido"
+
             exit 1
-          fi
-          echo "Política de segurança aprovada"
 
-      - name: Validar estrutura do projeto
-        run: |
-          test -d app
-          test -d k8s
-          test -d docs
-          echo "Estrutura aprovada"
+          fi
+
+          echo "Segurança aprovada"
